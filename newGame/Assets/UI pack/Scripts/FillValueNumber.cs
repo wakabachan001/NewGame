@@ -10,6 +10,6 @@ public class FillValueNumber : MonoBehaviour
     void Update()
     {
         float amount = TargetImage.fillAmount * 100;
-        gameObject.GetComponent<Text>().text = amount.ToString("F0");
+        gameObject.GetComponentInChildren<Text>().text = amount.ToString("F0");
     }
 }
