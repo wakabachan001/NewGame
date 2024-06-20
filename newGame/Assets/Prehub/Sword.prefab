@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
+  parentCanvas: {fileID: 0}
 --- !u!225 &4251468857526051705
 CanvasGroup:
   m_ObjectHideFlags: 0

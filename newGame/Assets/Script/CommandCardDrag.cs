@@ -23,7 +23,7 @@ public class CommandCardDrag : MonoBehaviour,IDragHandler, IBeginDragHandler, IE
     {
         canvasGroup.alpha = .6f;
         canvasGroup.blocksRaycasts = false;
-        Instantiate(this, rectTransform.anchoredPosition, Quaternion.identity, parentCanvas);
+        //Instantiate(this, rectTransform.anchoredPosition, Quaternion.identity, parentCanvas);
     }
 
     public void OnDrag(PointerEventData eventData)
