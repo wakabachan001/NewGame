@@ -23,18 +23,19 @@ public class CommandCardDrag : MonoBehaviour,IDragHandler, IBeginDragHandler, IE
     {
         canvasGroup.alpha = .6f;
         canvasGroup.blocksRaycasts = false;
-        //Instantiate(this, rectTransform.anchoredPosition, Quaternion.identity, parentCanvas);
+        prevPos = rectTransform.anchoredPosition;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         // 位置を更新　　　　　　　　　　　　　　　　　　　　キャンバスのサイズが変わっても正しく動作する
-        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        rectTransform.anchoredPosition += eventData.delta  / canvas.scaleFactor  ;
     }
 
     public void OnEndDrag(PointerEventData eventData) 
     {
         //  ドラッグ前の位置に戻す
+        rectTransform.anchoredPosition = prevPos;
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
     }
