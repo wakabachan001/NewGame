@@ -6,20 +6,19 @@ using UnityEngine.EventSystems;
 
 public class CommandDropArea : MonoBehaviour, IDropHandler
 {
-     private Transform parent;
+    public static List<GameObject> CommandList = new List<GameObject>();
     private RectTransform dropAreaRectTransform;
-    private GameObject newObject;
+    private GameObject SelectedCommand;
 
     void Start()
     {
-        parent = this.transform;
         dropAreaRectTransform = GetComponent<RectTransform>();
     }
     public void OnDrop(PointerEventData eventData)
     {
         Debug.Log(gameObject.name + "に" + eventData.pointerDrag.name + "がドロップされました。");
 
-        if (newObject != null) { Destroy(newObject); }
+        if (SelectedCommand != null) { Destroy(SelectedCommand); }
 
         if (eventData.pointerDrag != null)
         {
@@ -35,23 +34,26 @@ public class CommandDropArea : MonoBehaviour, IDropHandler
                 out localPoint);
 
             // 新しいオブジェクトの生成
-            newObject = Instantiate(eventData.pointerDrag, dropAreaRectTransform);
+            SelectedCommand = Instantiate(eventData.pointerDrag, dropAreaRectTransform);
 
             // 新しいオブジェクトのRectTransformをオリジナルのサイズに設定
-            RectTransform newRectTransform = newObject.GetComponent<RectTransform>();
-            newRectTransform.position = dropAreaRectTransform.position;
-            newRectTransform.sizeDelta = draggedRectTransform.sizeDelta;
-            newRectTransform.localRotation = draggedRectTransform.localRotation;
+            RectTransform SelectedCommandRectTransform = SelectedCommand.GetComponent<RectTransform>();
+            SelectedCommandRectTransform.position = dropAreaRectTransform.position;
+            SelectedCommandRectTransform.sizeDelta = draggedRectTransform.sizeDelta;
+            SelectedCommandRectTransform.localRotation = draggedRectTransform.localRotation;
 
-            // アンカーとピボットをコピー
-            newRectTransform.anchorMin = draggedRectTransform.anchorMin;
-            newRectTransform.anchorMax = draggedRectTransform.anchorMax;
-            newRectTransform.pivot = draggedRectTransform.pivot;
+            // スケールを変更、（ドロップエリアの枠内に収まるようにする）
+            SelectedCommandRectTransform.localScale = draggedRectTransform.localScale * 0.8f;
 
-            // スケールをコピー (親のスケールが影響しないように)
-            newRectTransform.localScale = draggedRectTransform.localScale * 0.8f;
+            SelectedCommand.GetComponent<CanvasGroup>().alpha=1f;
 
-            newObject.GetComponent<CanvasGroup>().alpha=1f;
+            CommandList.Add(SelectedCommand);
+
+            for(int i =0; i<CommandList.Count;i++)
+            {
+                Debug.Log(CommandList[i]);
+            }
+            
         }
     }
 }

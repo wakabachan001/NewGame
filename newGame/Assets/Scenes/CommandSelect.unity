@@ -316,6 +316,7 @@ GameObject:
   - component: {fileID: 65937080}
   - component: {fileID: 65937082}
   - component: {fileID: 65937081}
+  - component: {fileID: 65937083}
   m_Layer: 5
   m_Name: PlayerTurn04
   m_TagString: Untagged
@@ -380,6 +381,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 65937079}
   m_CullTransparentMesh: 1
+--- !u!114 &65937083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 65937079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 652e9067013282b45b18b743540df02f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &113601438
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,6 +480,7 @@ GameObject:
   - component: {fileID: 117262809}
   - component: {fileID: 117262811}
   - component: {fileID: 117262810}
+  - component: {fileID: 117262812}
   m_Layer: 5
   m_Name: PlayerTurn05
   m_TagString: Untagged
@@ -531,6 +545,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 117262808}
   m_CullTransparentMesh: 1
+--- !u!114 &117262812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 117262808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 652e9067013282b45b18b743540df02f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &127095002
 GameObject:
   m_ObjectHideFlags: 0
@@ -921,18 +947,6 @@ PrefabInstance:
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1961108104189958568, guid: 987dd6e188456f749bfd887b94f46251, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1961108104189958568, guid: 987dd6e188456f749bfd887b94f46251, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1961108104189958568, guid: 987dd6e188456f749bfd887b94f46251, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1961108104189958568, guid: 987dd6e188456f749bfd887b94f46251, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -979,10 +993,6 @@ PrefabInstance:
     - target: {fileID: 1961108104189958568, guid: 987dd6e188456f749bfd887b94f46251, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7027796012291585360, guid: 987dd6e188456f749bfd887b94f46251, type: 3}
-      propertyPath: m_PixelsPerUnitMultiplier
-      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8422283801657592226, guid: 987dd6e188456f749bfd887b94f46251, type: 3}
       propertyPath: m_Name
@@ -1202,6 +1212,7 @@ GameObject:
   - component: {fileID: 758794291}
   - component: {fileID: 758794293}
   - component: {fileID: 758794292}
+  - component: {fileID: 758794294}
   m_Layer: 5
   m_Name: PlayerTurn02
   m_TagString: Untagged
@@ -1266,6 +1277,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 758794290}
   m_CullTransparentMesh: 1
+--- !u!114 &758794294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758794290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 652e9067013282b45b18b743540df02f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &839762665
 GameObject:
   m_ObjectHideFlags: 0
@@ -1318,6 +1341,7 @@ GameObject:
   - component: {fileID: 917313251}
   - component: {fileID: 917313253}
   - component: {fileID: 917313252}
+  - component: {fileID: 917313254}
   m_Layer: 5
   m_Name: PlayerTurn03
   m_TagString: Untagged
@@ -1382,6 +1406,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 917313250}
   m_CullTransparentMesh: 1
+--- !u!114 &917313254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917313250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 652e9067013282b45b18b743540df02f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1056189083
 GameObject:
   m_ObjectHideFlags: 0
@@ -1635,6 +1671,7 @@ GameObject:
   - component: {fileID: 1231707346}
   - component: {fileID: 1231707348}
   - component: {fileID: 1231707347}
+  - component: {fileID: 1231707349}
   m_Layer: 5
   m_Name: PlayerTurn06
   m_TagString: Untagged
@@ -1699,6 +1736,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1231707345}
   m_CullTransparentMesh: 1
+--- !u!114 &1231707349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231707345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 652e9067013282b45b18b743540df02f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1291213925
 GameObject:
   m_ObjectHideFlags: 0
@@ -1993,18 +2042,6 @@ PrefabInstance:
     - target: {fileID: 61897200725596696, guid: d4c154499209fcf4db22fdfe31d5e878, type: 3}
       propertyPath: m_SizeDelta.y
       value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 61897200725596696, guid: d4c154499209fcf4db22fdfe31d5e878, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 61897200725596696, guid: d4c154499209fcf4db22fdfe31d5e878, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 61897200725596696, guid: d4c154499209fcf4db22fdfe31d5e878, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 61897200725596696, guid: d4c154499209fcf4db22fdfe31d5e878, type: 3}
       propertyPath: m_LocalPosition.x
