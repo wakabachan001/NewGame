@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -7,7 +8,7 @@ public class CommandDropArea : MonoBehaviour, IDropHandler
 {
      private Transform parent;
     private RectTransform dropAreaRectTransform;
-
+    private GameObject newObject;
 
     void Start()
     {
@@ -17,10 +18,8 @@ public class CommandDropArea : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData eventData)
     {
         Debug.Log(gameObject.name + "に" + eventData.pointerDrag.name + "がドロップされました。");
-        //if (eventData.pointerDrag != null)
-        //{
-        //    Instantiate(eventData.pointerDrag, GetComponent<RectTransform>().anchoredPosition, Quaternion.identity, parent);
-        //}
+
+        if (newObject != null) { Destroy(newObject); }
 
         if (eventData.pointerDrag != null)
         {
@@ -36,7 +35,7 @@ public class CommandDropArea : MonoBehaviour, IDropHandler
                 out localPoint);
 
             // 新しいオブジェクトの生成
-            GameObject newObject = Instantiate(eventData.pointerDrag, dropAreaRectTransform);
+            newObject = Instantiate(eventData.pointerDrag, dropAreaRectTransform);
 
             // 新しいオブジェクトのRectTransformをオリジナルのサイズに設定
             RectTransform newRectTransform = newObject.GetComponent<RectTransform>();

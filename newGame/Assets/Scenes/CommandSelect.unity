@@ -287,6 +287,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Potion
       objectReference: {fileID: 0}
+    - target: {fileID: 5356092992294165040, guid: b614683d5fc78d14584a6a1a9b64e00d, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 348808626}
+    - target: {fileID: 5356092992294165040, guid: b614683d5fc78d14584a6a1a9b64e00d, type: 3}
+      propertyPath: parentCanvas
+      value: 
+      objectReference: {fileID: 839762666}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -980,6 +988,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hammer
       objectReference: {fileID: 0}
+    - target: {fileID: 8672520871885965847, guid: 987dd6e188456f749bfd887b94f46251, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 348808626}
+    - target: {fileID: 8672520871885965847, guid: 987dd6e188456f749bfd887b94f46251, type: 3}
+      propertyPath: parentCanvas
+      value: 
+      objectReference: {fileID: 839762666}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1157,6 +1173,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Magic
       objectReference: {fileID: 0}
+    - target: {fileID: 6175448123191871014, guid: 52b47c2f6056fd94c85ddff90de592bc, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 348808626}
+    - target: {fileID: 6175448123191871014, guid: 52b47c2f6056fd94c85ddff90de592bc, type: 3}
+      propertyPath: parentCanvas
+      value: 
+      objectReference: {fileID: 839762666}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

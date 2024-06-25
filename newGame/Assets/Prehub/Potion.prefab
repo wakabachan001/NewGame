@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 3853185571419382910}
   - component: {fileID: 8157856280837173222}
   - component: {fileID: 5356092992294165040}
+  - component: {fileID: 3271032112030096390}
   m_Layer: 5
   m_Name: Potion
   m_TagString: Untagged
@@ -166,3 +167,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvas: {fileID: 0}
   parentCanvas: {fileID: 0}
+--- !u!225 &3271032112030096390
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4165911101390083650}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
