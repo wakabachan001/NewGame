@@ -409,6 +409,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 146749843}
+  - component: {fileID: 146749844}
   m_Layer: 5
   m_Name: Playerturn
   m_TagString: Untagged
@@ -441,6 +442,25 @@ RectTransform:
   m_AnchoredPosition: {x: 0.0012405, y: 0.00051308}
   m_SizeDelta: {x: 108.33, y: 938.31}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &146749844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146749842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7abf8f59b387e4b45b3f546a446e848d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pCommand:
+  - {fileID: 2130650433}
+  - {fileID: 1573853143}
+  - {fileID: 144981122}
+  - {fileID: 702279081}
+  - {fileID: 453448341}
+  - {fileID: 341327061}
 --- !u!1 &193019437
 GameObject:
   m_ObjectHideFlags: 0
@@ -1011,7 +1031,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -809.99994, y: -35.39}
+  m_AnchoredPosition: {x: -809.99994, y: -35.390015}
   m_SizeDelta: {x: -1811.67, y: -141.69}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &567690285
@@ -1947,7 +1967,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 809, y: -35.39}
+  m_AnchoredPosition: {x: 809, y: -35.390015}
   m_SizeDelta: {x: -1811.67, y: -141.69}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1938447004

@@ -51,7 +51,7 @@ public class CommandDropArea : MonoBehaviour, IDropHandler
 
             for(int i =0; i<CommandList.Count;i++)
             {
-                Debug.Log(CommandList[i]);
+                Debug.Log(CommandList[i].name.StartsWith("Sword"));
             }
             
         }
