@@ -6,19 +6,20 @@ using UnityEngine.EventSystems;
 
 public class CommandDropArea : MonoBehaviour, IDropHandler
 {
-    public static List<GameObject> CommandList = new List<GameObject>();
+    private GameManager gameManager;
     private RectTransform dropAreaRectTransform;
     private GameObject SelectedCommand;
 
     void Start()
     {
         dropAreaRectTransform = GetComponent<RectTransform>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
     public void OnDrop(PointerEventData eventData)
     {
         Debug.Log(gameObject.name + "に" + eventData.pointerDrag.name + "がドロップされました。");
 
-        if (SelectedCommand != null) { Destroy(SelectedCommand); }
+        if (SelectedCommand != null) { Destroy(SelectedCommand); GameManager.CommandList.Remove(SelectedCommand); }
 
         if (eventData.pointerDrag != null)
         {
@@ -47,11 +48,11 @@ public class CommandDropArea : MonoBehaviour, IDropHandler
 
             SelectedCommand.GetComponent<CanvasGroup>().alpha=1f;
 
-            CommandList.Add(SelectedCommand);
+            GameManager.CommandList.Add(SelectedCommand);
 
-            for(int i =0; i<CommandList.Count;i++)
+            for(int i =0; i< GameManager.CommandList.Count;i++)
             {
-                Debug.Log(CommandList[i].name.StartsWith("Sword"));
+                Debug.Log(GameManager.CommandList[i].name.StartsWith("Sword"));
             }
             
         }

@@ -3,24 +3,24 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
-public class PlayerTurn : CommandDropArea
+public class PlayerTurn : MonoBehaviour
 {
     public GameObject[] pCommand = new GameObject[6];
-    private GameObject commandOBJ;
+    private GameObject[] commandOBJ = new GameObject[0];
 
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < CommandList.Count; i++) 
-        {
-            commandOBJ = Instantiate(CommandList[i], pCommand[i].GetComponent<RectTransform>());
-            commandOBJ.GetComponent<RectTransform>().position = pCommand[i].GetComponent<RectTransform>().position;
-        }
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        for (int i = 0; i < GameManager.CommandList.Count; i++) 
+        {
+            commandOBJ[i] = Instantiate(GameManager.CommandList[i], pCommand[i].GetComponent<RectTransform>());
+            commandOBJ[i].GetComponent<RectTransform>().position = pCommand[i].GetComponent<RectTransform>().position;
+        }
     }
 }
