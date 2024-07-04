@@ -11,16 +11,16 @@ public class PlayerTurn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        for (int i = 0; i < GameManager.CommandList.Count; i++)
+        {
+            //commandOBJ[i] = Instantiate(GameManager.CommandList[i], pCommand[i].GetComponent<RectTransform>());
+            //commandOBJ[i].GetComponent<RectTransform>().position = pCommand[i].GetComponent<RectTransform>().position;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i < GameManager.CommandList.Count; i++) 
-        {
-            commandOBJ[i] = Instantiate(GameManager.CommandList[i], pCommand[i].GetComponent<RectTransform>());
-            commandOBJ[i].GetComponent<RectTransform>().position = pCommand[i].GetComponent<RectTransform>().position;
-        }
+        
     }
 }

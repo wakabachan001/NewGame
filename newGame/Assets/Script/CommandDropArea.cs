@@ -49,10 +49,20 @@ public class CommandDropArea : MonoBehaviour, IDropHandler
             SelectedCommand.GetComponent<CanvasGroup>().alpha=1f;
 
             GameManager.CommandList.Add(SelectedCommand);
+            //if (SelectedCommand.name.StartsWith("Sword")) 
+            //    GameManager.CommandList.Add(GameManager.ItemName.Sword);
+            //else if (SelectedCommand.name.StartsWith("Hammer"))
+            //    GameManager.CommandList.Add(GameManager.ItemName.Hammer);
+            //else if (SelectedCommand.name.StartsWith("Masic"))
+            //    GameManager.CommandList.Add(GameManager.ItemName.Masic);
+            //else if (SelectedCommand.name.StartsWith("Potion"))
+            //    GameManager.CommandList.Add(GameManager.ItemName.Sword);
 
-            for(int i =0; i< GameManager.CommandList.Count;i++)
+
+            for (int i =0; i< GameManager.CommandList.Count;i++)
             {
-                Debug.Log(GameManager.CommandList[i].name.StartsWith("Sword"));
+                //Debug.Log(GameManager.CommandList[i].name.StartsWith("Sword"));
+                Debug.Log(GameManager.CommandList[i]);
             }
             
         }
