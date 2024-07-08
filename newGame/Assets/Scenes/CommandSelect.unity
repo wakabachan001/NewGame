@@ -318,7 +318,7 @@ GameObject:
   - component: {fileID: 65937081}
   - component: {fileID: 65937083}
   m_Layer: 5
-  m_Name: PlayerTurn04
+  m_Name: PlayerTurn03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -482,7 +482,7 @@ GameObject:
   - component: {fileID: 117262810}
   - component: {fileID: 117262812}
   m_Layer: 5
-  m_Name: PlayerTurn05
+  m_Name: PlayerTurn04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1215,7 +1215,7 @@ GameObject:
   - component: {fileID: 758794292}
   - component: {fileID: 758794294}
   m_Layer: 5
-  m_Name: PlayerTurn02
+  m_Name: PlayerTurn01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1344,7 +1344,7 @@ GameObject:
   - component: {fileID: 917313252}
   - component: {fileID: 917313254}
   m_Layer: 5
-  m_Name: PlayerTurn03
+  m_Name: PlayerTurn02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1586,7 +1586,7 @@ GameObject:
   - component: {fileID: 1105557447}
   - component: {fileID: 1105557446}
   m_Layer: 5
-  m_Name: PlayerTurn01
+  m_Name: PlayerTurn00
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1674,7 +1674,7 @@ GameObject:
   - component: {fileID: 1231707347}
   - component: {fileID: 1231707349}
   m_Layer: 5
-  m_Name: PlayerTurn06
+  m_Name: PlayerTurn05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2855,6 +2855,18 @@ PrefabInstance:
     - target: {fileID: 5130146681298165262, guid: 45f16d8ab4f18a54aa17334b491e6121, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6264778661997466405, guid: 45f16d8ab4f18a54aa17334b491e6121, type: 3}
+      propertyPath: a.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6264778661997466405, guid: 45f16d8ab4f18a54aa17334b491e6121, type: 3}
+      propertyPath: c.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6264778661997466405, guid: 45f16d8ab4f18a54aa17334b491e6121, type: 3}
+      propertyPath: CommandList.Array.size
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

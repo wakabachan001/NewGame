@@ -325,7 +325,7 @@ GameObject:
   - component: {fileID: 144981125}
   - component: {fileID: 144981124}
   m_Layer: 5
-  m_Name: PlayerTurn03
+  m_Name: PlayerTurn02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -454,13 +454,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7abf8f59b387e4b45b3f546a446e848d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pCommand:
+  PlayerTurnCommand:
   - {fileID: 2130650433}
   - {fileID: 1573853143}
   - {fileID: 144981122}
   - {fileID: 702279081}
   - {fileID: 453448341}
   - {fileID: 341327061}
+  commandprehub:
+  - {fileID: 0}
+  - {fileID: 272751363267380875, guid: d4c154499209fcf4db22fdfe31d5e878, type: 3}
+  - {fileID: 8422283801657592226, guid: 987dd6e188456f749bfd887b94f46251, type: 3}
+  - {fileID: 5068172656296281217, guid: 52b47c2f6056fd94c85ddff90de592bc, type: 3}
+  - {fileID: 4165911101390083650, guid: b614683d5fc78d14584a6a1a9b64e00d, type: 3}
+  commandprehubCLONE:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &193019437
 GameObject:
   m_ObjectHideFlags: 0
@@ -562,7 +575,7 @@ GameObject:
   - component: {fileID: 341327064}
   - component: {fileID: 341327063}
   m_Layer: 5
-  m_Name: PlayerTurn06
+  m_Name: PlayerTurn05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -817,7 +830,7 @@ GameObject:
   - component: {fileID: 453448344}
   - component: {fileID: 453448343}
   m_Layer: 5
-  m_Name: PlayerTurn05
+  m_Name: PlayerTurn04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1085,7 +1098,7 @@ GameObject:
   - component: {fileID: 702279084}
   - component: {fileID: 702279083}
   m_Layer: 5
-  m_Name: PlayerTurn04
+  m_Name: PlayerTurn03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1728,7 +1741,7 @@ GameObject:
   - component: {fileID: 1573853146}
   - component: {fileID: 1573853145}
   m_Layer: 5
-  m_Name: PlayerTurn02
+  m_Name: PlayerTurn01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2020,7 +2033,7 @@ GameObject:
   - component: {fileID: 2130650436}
   - component: {fileID: 2130650435}
   m_Layer: 5
-  m_Name: PlayerTurn01
+  m_Name: PlayerTurn00
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

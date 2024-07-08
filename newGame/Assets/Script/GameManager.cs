@@ -5,8 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    public static List<GameObject> CommandList = new List<GameObject>();
-    public List<ItemName> a = new List<ItemName>();
+    public  List<GameObject> CommandList = new List<GameObject>(6);
+    public  List<ItemName> a = new List<ItemName>();
     public enum GameState
     {
         TITLE,
@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
 
     public  enum ItemName
     {
+        EMPTY,
         Sword,
         Hammer,
         Magic,
@@ -42,16 +43,19 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        for (int i = 0; i < CommandList.Count-1; i++) 
+        for (int i = 0; i < CommandList.Count; i++) 
         {
-            if (CommandList[i].name.StartsWith("Sword"))
-                a[i] = ItemName.Sword;
-            else if (CommandList[i].name.StartsWith("Hammer"))
-                a[i] = ItemName.Hammer;
-            else if (CommandList[i].name.StartsWith("Magic"))
-                a[i] = ItemName.Magic;
-            else if (CommandList[i].name.StartsWith("Potion"))
-                a[i] = ItemName.Potion;
+            if (CommandList[i] != null) 
+            {
+                if (CommandList[i].name.StartsWith("Sword"))
+                    a[i] = ItemName.Sword;
+               else if (CommandList[i].name.StartsWith("Hammer"))
+                    a[i] = ItemName.Hammer;
+               else if (CommandList[i].name.StartsWith("Magic"))
+                    a[i] = ItemName.Magic;
+               else if (CommandList[i].name.StartsWith("Potion"))
+                    a[i] = ItemName.Potion;
+            }
         }
     }
 

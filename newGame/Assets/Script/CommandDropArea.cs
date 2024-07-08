@@ -9,6 +9,7 @@ public class CommandDropArea : MonoBehaviour, IDropHandler
     private GameManager gameManager;
     private RectTransform dropAreaRectTransform;
     private GameObject SelectedCommand;
+    private string[] num = new string[6] { "0", "1", "2", "3", "4", "5" };
 
     void Start()
     {
@@ -19,7 +20,12 @@ public class CommandDropArea : MonoBehaviour, IDropHandler
     {
         Debug.Log(gameObject.name + "に" + eventData.pointerDrag.name + "がドロップされました。");
 
-        if (SelectedCommand != null) { Destroy(SelectedCommand); GameManager.CommandList.Remove(SelectedCommand); }
+        if (SelectedCommand != null) 
+        { 
+            Destroy(SelectedCommand);
+            gameManager.CommandList.Remove(SelectedCommand);
+
+        }
 
         if (eventData.pointerDrag != null)
         {
@@ -48,21 +54,18 @@ public class CommandDropArea : MonoBehaviour, IDropHandler
 
             SelectedCommand.GetComponent<CanvasGroup>().alpha=1f;
 
-            GameManager.CommandList.Add(SelectedCommand);
-            //if (SelectedCommand.name.StartsWith("Sword")) 
-            //    GameManager.CommandList.Add(GameManager.ItemName.Sword);
-            //else if (SelectedCommand.name.StartsWith("Hammer"))
-            //    GameManager.CommandList.Add(GameManager.ItemName.Hammer);
-            //else if (SelectedCommand.name.StartsWith("Masic"))
-            //    GameManager.CommandList.Add(GameManager.ItemName.Masic);
-            //else if (SelectedCommand.name.StartsWith("Potion"))
-            //    GameManager.CommandList.Add(GameManager.ItemName.Sword);
+            //GameManager.CommandList.Add(SelectedCommand);
 
+            for (int i = 0; i < 6; i++) 
+            {
+                if (gameObject.name.EndsWith(num[i]))
+                    gameManager.CommandList[i] = SelectedCommand;
+            }
 
-            for (int i =0; i< GameManager.CommandList.Count;i++)
+            for (int i =0; i< gameManager.CommandList.Count;i++)
             {
                 //Debug.Log(GameManager.CommandList[i].name.StartsWith("Sword"));
-                Debug.Log(GameManager.CommandList[i]);
+                Debug.Log(gameManager.CommandList[i]);
             }
             
         }

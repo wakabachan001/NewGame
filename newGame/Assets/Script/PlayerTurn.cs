@@ -5,22 +5,42 @@ using UnityEngine;
 
 public class PlayerTurn : MonoBehaviour
 {
-    public GameObject[] pCommand = new GameObject[6];
-    private GameObject[] commandOBJ = new GameObject[0];
+    GameManager gamemanager;
+    public GameObject[] PlayerTurnCommand = new GameObject[6];
+    public GameObject[] commandprehub = new GameObject[5];
+    public GameObject[] commandprehubCLONE = new GameObject[6];
 
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < GameManager.CommandList.Count; i++)
+        gamemanager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        for (int i = 0; i < 6; i++) 
         {
-            //commandOBJ[i] = Instantiate(GameManager.CommandList[i], pCommand[i].GetComponent<RectTransform>());
-            //commandOBJ[i].GetComponent<RectTransform>().position = pCommand[i].GetComponent<RectTransform>().position;
+            if (gamemanager.a[i] == GameManager.ItemName.Sword)
+            {
+                CLONE_PLAYERCOMMAND(1, i);
+            }
+           else if (gamemanager.a[i] == GameManager.ItemName.Hammer)
+            {
+                CLONE_PLAYERCOMMAND(2, i);
+            }
+            else if (gamemanager.a[i] == GameManager.ItemName.Magic)
+            {
+                CLONE_PLAYERCOMMAND(3, i);
+            }
+            else if (gamemanager.a[i] == GameManager.ItemName.Potion)
+            {
+                CLONE_PLAYERCOMMAND(4, i);
+            }
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    void CLONE_PLAYERCOMMAND(int prehubNUM,int arrayNUM)
     {
-        
+        commandprehubCLONE[arrayNUM] = Instantiate(commandprehub[prehubNUM], PlayerTurnCommand[arrayNUM].GetComponent<RectTransform>());
+        commandprehubCLONE[arrayNUM].GetComponent<RectTransform>().position = PlayerTurnCommand[arrayNUM].GetComponent<RectTransform>().position;
+        commandprehubCLONE[arrayNUM].GetComponent<RectTransform>().localScale = commandprehub[prehubNUM].GetComponent<RectTransform>().localScale * 0.8f;
+
     }
 }
