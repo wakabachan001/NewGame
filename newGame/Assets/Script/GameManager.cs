@@ -18,6 +18,14 @@ public class GameManager : MonoBehaviour
         GAMEOVER2,
     }
 
+    public enum TURN
+    {
+        PLAYER_TURN,
+        ENEMY_TURN
+    }
+
+    public TURN nowTURN = TURN.ENEMY_TURN;
+
     public  enum ItemName
     {
         EMPTY,
