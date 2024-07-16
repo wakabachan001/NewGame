@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using static GameManager;
 
-public class Player : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     GameManager GM;
-    PlayerTurn playerturn;
+    EnemyTurn enemyturn;
 
     [SerializeField] int maxHP;
     [SerializeField] int HP;
@@ -14,36 +14,37 @@ public class Player : MonoBehaviour
     [SerializeField] int Vitality;
 
     bool[] action = new bool[5];
+    public List<ItemName> enemycommand = new List<ItemName>();
     // Start is called before the first frame update
     void Start()
     {
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
-        playerturn = GameObject.Find("PlayerTurn").GetComponent<PlayerTurn>();
+        enemyturn = GameObject.Find("EnemyTurn").GetComponent<EnemyTurn>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        action = playerturn.CommandType;
+        action = enemyturn.CommandType;
 
-        if(GM.nowTURN == TURN.PLAYER_TURN)
+        if (GM.nowTURN == TURN.ENEMY_TURN)
         {
-            playerturn.CommandExecution();
+            enemyturn.CommandExecution();
 
             if (action[(int)ItemName.Sword] ||
-                action[(int)ItemName.Hammer]||
-                action[(int)ItemName.Magic]  )
+                action[(int)ItemName.Hammer] ||
+                action[(int)ItemName.Magic])
             {
                 //  攻撃してそうなアニメーション
             }
-            else if( action[(int)ItemName.Potion] )
+            else if (action[(int)ItemName.Potion])
             {
                 //  回復してそうなアニメーション
             }
 
-            playerturn.commandprehubCLONE[GM.TurnCount].GetComponent<CanvasGroup>().alpha = 0.2f;
+            enemyturn.commandprehubCLONE[GM.TurnCount].GetComponent<CanvasGroup>().alpha = 0.2f;
 
-            GM.nowTURN= TURN.ENEMY_TURN;
+            GM.nowTURN = TURN.PLAYER_TURN;
         }
     }
 }

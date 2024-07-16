@@ -6,7 +6,11 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     public  List<GameObject> CommandList = new List<GameObject>(6);
-    public  List<ItemName> a = new List<ItemName>();
+    public  List<ItemName> playercommand = new List<ItemName>();
+
+    public  int TurnCount = 1;
+
+    //public string TURN = "\0";
     public enum GameState
     {
         TITLE,
@@ -23,7 +27,6 @@ public class GameManager : MonoBehaviour
         PLAYER_TURN,
         ENEMY_TURN
     }
-
     public TURN nowTURN = TURN.ENEMY_TURN;
 
     public  enum ItemName
@@ -47,6 +50,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
     }
 
     private void Update()
@@ -56,13 +60,13 @@ public class GameManager : MonoBehaviour
             if (CommandList[i] != null) 
             {
                 if (CommandList[i].name.StartsWith("Sword"))
-                    a[i] = ItemName.Sword;
+                    playercommand[i] = ItemName.Sword;
                else if (CommandList[i].name.StartsWith("Hammer"))
-                    a[i] = ItemName.Hammer;
+                    playercommand[i] = ItemName.Hammer;
                else if (CommandList[i].name.StartsWith("Magic"))
-                    a[i] = ItemName.Magic;
+                    playercommand[i] = ItemName.Magic;
                else if (CommandList[i].name.StartsWith("Potion"))
-                    a[i] = ItemName.Potion;
+                    playercommand[i] = ItemName.Potion;
             }
         }
     }
