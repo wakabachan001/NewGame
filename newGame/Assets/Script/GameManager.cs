@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     public  List<GameObject> CommandList = new List<GameObject>(6);
     public  List<ItemName> playercommand = new List<ItemName>();
+    public  List<GameObject> EnemyList = new List<GameObject>(4);
 
     public  int TurnCount = 1;
 

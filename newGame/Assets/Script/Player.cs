@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using static GameManager;
 
@@ -8,10 +6,17 @@ public class Player : MonoBehaviour
     GameManager GM;
     PlayerTurn playerturn;
 
+    //  基礎ステータス
     [SerializeField] int maxHP;
     [SerializeField] int HP;
     [SerializeField] int Strength;
-    [SerializeField] int Vitality;
+    [SerializeField] int Defence;
+
+    //  攻撃種別　耐性
+    //  RES = resistance( 耐性 )
+    [SerializeField] int SwordRES;  //  剣　耐性　
+    [SerializeField] int HammerRES; //  槌  耐性  
+    [SerializeField] int MagicRES;  //  魔  耐性  
 
     bool[] action = new bool[5];
     // Start is called before the first frame update
@@ -19,6 +24,8 @@ public class Player : MonoBehaviour
     {
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         playerturn = GameObject.Find("PlayerTurn").GetComponent<PlayerTurn>();
+
+        HP = maxHP;
     }
 
     // Update is called once per frame
@@ -30,9 +37,15 @@ public class Player : MonoBehaviour
         {
             playerturn.CommandExecution();
 
-            if (action[(int)ItemName.Sword] ||
-                action[(int)ItemName.Hammer]||
-                action[(int)ItemName.Magic]  )
+            if (action[(int)ItemName.Sword])
+            {
+                //  攻撃してそうなアニメーション
+            }
+            else if(action[(int)ItemName.Hammer])
+            {
+                //  攻撃してそうなアニメーション
+            }
+            else if (action[(int)ItemName.Magic])
             {
                 //  攻撃してそうなアニメーション
             }
@@ -41,9 +54,25 @@ public class Player : MonoBehaviour
                 //  回復してそうなアニメーション
             }
 
-            playerturn.commandprehubCLONE[GM.TurnCount].GetComponent<CanvasGroup>().alpha = 0.2f;
+            playerturn.commandprehubCLONE[GM.TurnCount - 1].GetComponent<CanvasGroup>().alpha = 0.2f;
 
             GM.nowTURN= TURN.ENEMY_TURN;
         }
+    }
+
+    public void DamageCalc(string string_attackTYPE,int attackPower)
+    {
+        int int_attackTYPE = 0;
+
+        if (string_attackTYPE == "Sword")
+            int_attackTYPE = SwordRES;
+
+        if (string_attackTYPE == "Hammer")
+            int_attackTYPE = HammerRES;
+
+        if (string_attackTYPE == "Magic")
+            int_attackTYPE = MagicRES;
+
+        HP = attackPower * (1 - (Defence + int_attackTYPE) / 100);
     }
 }

@@ -44,3 +44,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5d9dbac7c1f56d418a23930c0cda294, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CommandList:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  playercommand: 000000000000000000000000000000000000000000000000
+  EnemyList:
+  - {fileID: 2200185237431256712, guid: 0665326551f11704eae9f07d9a169e9b, type: 3}
+  - {fileID: 3251214440278622263, guid: a1bf94042c3645b49945f59a2745e38b, type: 3}
+  - {fileID: 7052557827498241720, guid: 895091bd6da521745a430638e9b7c58e, type: 3}
+  - {fileID: 2048795692867387678, guid: 4a678e7f6e295cb49a1b720ecfa16313, type: 3}
+  TurnCount: 1
+  nowTURN: 1

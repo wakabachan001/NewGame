@@ -411,7 +411,7 @@ GameObject:
   - component: {fileID: 146749843}
   - component: {fileID: 146749844}
   m_Layer: 5
-  m_Name: Playerturn
+  m_Name: PlayerTurn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1045,7 +1045,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -810, y: -35.390015}
+  m_AnchoredPosition: {x: -809.99994, y: -35.390015}
   m_SizeDelta: {x: -1811.67, y: -141.69}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &567690285
@@ -1388,6 +1388,10 @@ PrefabInstance:
     - target: {fileID: 4105362945620786471, guid: ebea5f8b8163f9a4ab9d9a1b45444e28, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7359157793940712506, guid: ebea5f8b8163f9a4ab9d9a1b45444e28, type: 3}
+      propertyPath: maxHP
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

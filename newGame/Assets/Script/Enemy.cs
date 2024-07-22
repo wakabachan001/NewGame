@@ -9,9 +9,13 @@ public class Enemy : MonoBehaviour
     EnemyTurn enemyturn;
 
     [SerializeField] int maxHP;
-    [SerializeField] int HP;
+    [SerializeField] public int HP;
     [SerializeField] int Strength;
-    [SerializeField] int Vitality;
+    [SerializeField] int Defence;
+
+    [SerializeField] int SwordRES;
+    [SerializeField] int HammerRES;
+    [SerializeField] int MagicRES;
 
     bool[] action = new bool[5];
     public List<ItemName> enemycommand = new List<ItemName>();
@@ -31,9 +35,15 @@ public class Enemy : MonoBehaviour
         {
             enemyturn.CommandExecution();
 
-            if (action[(int)ItemName.Sword] ||
-                action[(int)ItemName.Hammer] ||
-                action[(int)ItemName.Magic])
+            if (action[(int)ItemName.Sword])
+            {
+                //  攻撃してそうなアニメーション
+            }
+            else if (action[(int)ItemName.Hammer])
+            {
+                //  攻撃してそうなアニメーション
+            }
+            else if (action[(int)ItemName.Magic])
             {
                 //  攻撃してそうなアニメーション
             }
@@ -46,5 +56,21 @@ public class Enemy : MonoBehaviour
 
             GM.nowTURN = TURN.PLAYER_TURN;
         }
+    }
+
+    public void DamageCalc(string string_attackTYPE, int attackPower)
+    {
+        int int_attackTYPE = 0;
+
+        if (string_attackTYPE == "Sword")
+            int_attackTYPE = SwordRES;
+
+        if (string_attackTYPE == "Hammer")
+            int_attackTYPE = HammerRES;
+
+        if (string_attackTYPE == "Magic")
+            int_attackTYPE = MagicRES;
+
+        HP = attackPower * (1 - (Defence + int_attackTYPE) / 100);
     }
 }
