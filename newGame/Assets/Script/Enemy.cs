@@ -29,32 +29,35 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        action = enemyturn.CommandType;
-
-        if (GM.nowTURN == TURN.ENEMY_TURN)
+        if (GM.string_nowScene == "BATTLE") 
         {
-            enemyturn.CommandExecution();
+            action = enemyturn.CommandType;
 
-            if (action[(int)ItemName.Sword])
+            if (GM.nowTURN == TURN.ENEMY_TURN)
             {
-                //  攻撃してそうなアニメーション
-            }
-            else if (action[(int)ItemName.Hammer])
-            {
-                //  攻撃してそうなアニメーション
-            }
-            else if (action[(int)ItemName.Magic])
-            {
-                //  攻撃してそうなアニメーション
-            }
-            else if (action[(int)ItemName.Potion])
-            {
-                //  回復してそうなアニメーション
-            }
+                enemyturn.CommandExecution();
 
-            enemyturn.commandprehubCLONE[GM.TurnCount].GetComponent<CanvasGroup>().alpha = 0.2f;
+                if (action[(int)ItemName.Sword])
+                {
+                    //  攻撃してそうなアニメーション
+                }
+                else if (action[(int)ItemName.Hammer])
+                {
+                    //  攻撃してそうなアニメーション
+                }
+                else if (action[(int)ItemName.Magic])
+                {
+                    //  攻撃してそうなアニメーション
+                }
+                else if (action[(int)ItemName.Potion])
+                {
+                    //  回復してそうなアニメーション
+                }
 
-            GM.nowTURN = TURN.PLAYER_TURN;
+                enemyturn.commandprehubCLONE[GM.TurnCount].GetComponent<CanvasGroup>().alpha = 0.2f;
+
+                GM.nowTURN = TURN.PLAYER_TURN;
+            }
         }
     }
 

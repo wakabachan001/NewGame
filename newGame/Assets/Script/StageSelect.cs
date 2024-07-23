@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static GameManager;
 
 public class StageSelect : MonoBehaviour
 {
@@ -23,23 +24,6 @@ public class StageSelect : MonoBehaviour
 
     public void OnClick()
     {
-        //if (this.gameObject.name == "Stage0Button") 
-        //{
-        //    int_StageNumber = 0;
-        //}
-        //else if(this.gameObject.name == "Stage1Button")
-        //{
-        //    int_StageNumber = 1;
-        //}
-        //else if (this.gameObject.name == "Stage2Button")
-        //{
-        //    int_StageNumber = 2;
-        //}
-        //else if (this.gameObject.name == "Stage3Button")
-        //{
-        //    int_StageNumber = 3;
-        //}
-
         for (int i = 0; i < maxStages; i++) 
         {
             char_StageNumber = (char)(i + '0');
@@ -48,9 +32,8 @@ public class StageSelect : MonoBehaviour
                 int_StageNumber = char_StageNumber - '0';
                 break;
             }
-               
         }
 
-        Initiate.Fade("CommandSelect", Color.black, 1.5f);
+        FindObjectOfType<GameManager>().SceneChange(GameScene.COMMANDSELECT);
     }
 }
