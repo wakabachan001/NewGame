@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using static GameManager;
 
@@ -54,9 +56,10 @@ public class Player : MonoBehaviour
                 //  回復してそうなアニメーション
             }
 
-            playerturn.commandprehubCLONE[GM.TurnCount - 1].GetComponent<CanvasGroup>().alpha = 0.2f;
+            if (playerturn.commandprehubCLONE[GM.TurnCount] != null)
+                playerturn.commandprehubCLONE[GM.TurnCount].GetComponent<CanvasGroup>().alpha = 0.2f;
 
-            GM.nowTURN= TURN.ENEMY_TURN;
+            StartCoroutine(FindObjectOfType<GameManager>().WaitTimer(2.5f, true));
         }
     }
 

@@ -17,6 +17,12 @@ public class EnemyTurn : MonoBehaviour
     void Start()
     {
         gamemanager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        Invoke("EnemyInstantiate", 0.5f);
+    }
+
+    void EnemyInstantiate()
+    {
         enemy = GameObject.FindWithTag("Enemy").GetComponent<Enemy>();
 
         for (int i = 0; i < 6; i++)
@@ -81,21 +87,25 @@ public class EnemyTurn : MonoBehaviour
         for (int i = 0; i < 5; i++)
             CommandType[i] = false;
 
-        if (commandprehubCLONE[commandNUM - 1].name.StartsWith("Sword"))
+        if (commandprehubCLONE[commandNUM] != null) 
         {
-            CommandType[(int)ItemName.Sword] = true;
-        }
-        else if (commandprehubCLONE[commandNUM - 1].name.StartsWith("Hammer"))
-        {
-            CommandType[(int)ItemName.Hammer] = true;
-        }
-        else if (commandprehubCLONE[commandNUM - 1].name.StartsWith("Magic"))
-        {
-            CommandType[(int)ItemName.Magic] = true;
-        }
-        else if (commandprehubCLONE[commandNUM - 1].name.StartsWith("Potion"))
-        {
-            CommandType[(int)ItemName.Potion] = true;
+            if (commandprehubCLONE[commandNUM].name.StartsWith("Sword"))
+            {
+                CommandType[(int)ItemName.Sword] = true;
+            }
+            else if (commandprehubCLONE[commandNUM].name.StartsWith("Hammer"))
+            {
+                CommandType[(int)ItemName.Hammer] = true;
+            }
+            else if (commandprehubCLONE[commandNUM].name.StartsWith("Magic"))
+            {
+                CommandType[(int)ItemName.Magic] = true;
+            }
+            else if (commandprehubCLONE[commandNUM].name.StartsWith("Potion"))
+            {
+                CommandType[(int)ItemName.Potion] = true;
+            }
+
         }
 
     }

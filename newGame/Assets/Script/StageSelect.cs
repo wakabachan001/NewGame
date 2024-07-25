@@ -30,6 +30,7 @@ public class StageSelect : MonoBehaviour
             if (gameObject.name.StartsWith("Stage" + char_StageNumber))
             {
                 int_StageNumber = char_StageNumber - '0';
+                Debug.Log(int_StageNumber);
                 break;
             }
         }

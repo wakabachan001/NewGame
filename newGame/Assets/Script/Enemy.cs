@@ -29,12 +29,16 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GM.string_nowScene == "BATTLE") 
+        if (GM.string_nowScene == "BATTLE")
         {
             action = enemyturn.CommandType;
 
             if (GM.nowTURN == TURN.ENEMY_TURN)
             {
+                //  Battleシーンに移動した瞬間に処理が作動しないように遅延をかける
+                if(GM.TurnCount == 0)
+                    StartCoroutine(GM.WaitTimer(3.0f, false));
+
                 enemyturn.CommandExecution();
 
                 if (action[(int)ItemName.Sword])
@@ -54,11 +58,14 @@ public class Enemy : MonoBehaviour
                     //  回復してそうなアニメーション
                 }
 
-                enemyturn.commandprehubCLONE[GM.TurnCount].GetComponent<CanvasGroup>().alpha = 0.2f;
-
-                GM.nowTURN = TURN.PLAYER_TURN;
+                if(enemyturn.commandprehubCLONE[GM.TurnCount] != null)
+                    enemyturn.commandprehubCLONE[GM.TurnCount].GetComponent<CanvasGroup>().alpha = 0.2f;
+                   
+                StartCoroutine(GM.WaitTimer(3.0f, true));
             }
         }
+        else
+            enabled = false;
     }
 
     public void DamageCalc(string string_attackTYPE, int attackPower)

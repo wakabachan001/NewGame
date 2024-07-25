@@ -9,9 +9,9 @@ public class GameManager : MonoBehaviour
     public  List<ItemName> playercommand = new List<ItemName>();
     public  List<GameObject> EnemyList = new List<GameObject>(4);
 
-    public  int TurnCount = 1;
+    public  int TurnCount = 0;
 
-    private bool canPprocess = true;
+    private bool wait = false;
 
     //public string TURN = "\0";
     public enum GameScene
@@ -131,18 +131,15 @@ public class GameManager : MonoBehaviour
         string_nowScene = "COMMANDSELECT";
         Initiate.Fade("CommandSelect", Color.black, 1.5f);
 
-        GameObject EnemyParent = GameObject.Find("EnemyParent");
-        Transform  EnemyParentTransform = EnemyParent.GetComponent<Transform>();
-        GameObject EnemyObject;
-
-        EnemyObject = Instantiate(EnemyList[StageSelect.int_StageNumber], EnemyParentTransform);
-        EnemyObject.transform.localScale *= 0.7f;
+        Invoke("EnemyInstantiate", 1.0f);
     }
 
     void BattleScene()
     {
         string_nowScene = "BATTLE";
-        Initiate.Fade("Battle", Color.black, 2.0f);
+        Initiate.Fade("Battle", Color.black, 1.5f);
+
+        Invoke("EnemyInstantiate", 1.0f);
     }
 
     void GameClearScene()
@@ -161,5 +158,36 @@ public class GameManager : MonoBehaviour
     {
         string_nowScene = "GAMEOVER2";
         Initiate.Fade("GameOver2", Color.black, 1.5f);
+    }
+
+    void EnemyInstantiate()
+    {
+        GameObject GameOBJ_EnemyParent = GameObject.Find("EnemyParent");
+        EnemyParent Script_EnemyParent = GameOBJ_EnemyParent.GetComponent<EnemyParent>();
+        Transform EnemyParentTransform = GameOBJ_EnemyParent.GetComponent<Transform>();
+
+        Script_EnemyParent.EnemyArray[StageSelect.int_StageNumber].SetActive(true);
+
+        //GameObject EnemyObject;
+        //EnemyObject = Instantiate(EnemyList[StageSelect.int_StageNumber], EnemyParentTransform);
+        //EnemyObject.transform.localScale *= 0.7f;
+
+    }
+
+    public IEnumerator WaitTimer(float time, bool TurnChange)
+    {
+        wait = true;
+
+        yield return new WaitForSecondsRealtime(time);
+
+        wait = false;
+
+        if (TurnChange)
+        {
+            if (nowTURN == TURN.PLAYER_TURN)
+                nowTURN = TURN.ENEMY_TURN;
+            else if (nowTURN == TURN.ENEMY_TURN)
+                nowTURN = TURN.PLAYER_TURN;
+        }
     }
 }

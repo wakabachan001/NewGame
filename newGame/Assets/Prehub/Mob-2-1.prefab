@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5352801395161765866
 Transform:
   m_ObjectHideFlags: 0
@@ -52,7 +52,7 @@ MonoBehaviour:
   SwordRES: 0
   HammerRES: 0
   MagicRES: 0
-  enemycommand: 010000000200000003000000000000000100000004000000
+  enemycommand: 010000000200000003000000010000000100000004000000
 --- !u!1 &4389473898500074499
 GameObject:
   m_ObjectHideFlags: 0
