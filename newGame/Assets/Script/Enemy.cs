@@ -18,6 +18,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] int MagicRES;
 
     bool[] action = new bool[5];
+
+    bool InAction = false;
     public List<ItemName> enemycommand = new List<ItemName>();
     // Start is called before the first frame update
     void Start()
@@ -33,39 +35,48 @@ public class Enemy : MonoBehaviour
         {
             action = enemyturn.CommandType;
 
-            if (GM.nowTURN == TURN.ENEMY_TURN)
+            if (GM.nowTURN == TURN.ENEMY_TURN && !InAction)
             {
-                //  Battleシーンに移動した瞬間に処理が作動しないように遅延をかける
-                if(GM.TurnCount == 0)
-                    StartCoroutine(GM.WaitTimer(3.0f, false));
+                InAction = true;
 
-                enemyturn.CommandExecution();
-
-                if (action[(int)ItemName.Sword])
-                {
-                    //  攻撃してそうなアニメーション
-                }
-                else if (action[(int)ItemName.Hammer])
-                {
-                    //  攻撃してそうなアニメーション
-                }
-                else if (action[(int)ItemName.Magic])
-                {
-                    //  攻撃してそうなアニメーション
-                }
-                else if (action[(int)ItemName.Potion])
-                {
-                    //  回復してそうなアニメーション
-                }
-
-                if(enemyturn.commandprehubCLONE[GM.TurnCount] != null)
-                    enemyturn.commandprehubCLONE[GM.TurnCount].GetComponent<CanvasGroup>().alpha = 0.2f;
-                   
-                StartCoroutine(GM.WaitTimer(3.0f, true));
+                Invoke("Action", 3.0f);
             }
         }
         else
             enabled = false;
+    }
+
+    void Action()
+    {
+        //  Battleシーンに移動した瞬間に処理が作動しないように遅延をかける
+        //if (GM.TurnCount == 0)
+        //    StartCoroutine(GM.WaitTimer(3.0f, false));
+
+        enemyturn.CommandExecution();
+
+        if (action[(int)ItemName.Sword])
+        {
+            //  攻撃してそうなアニメーション
+        }
+        else if (action[(int)ItemName.Hammer])
+        {
+            //  攻撃してそうなアニメーション
+        }
+        else if (action[(int)ItemName.Magic])
+        {
+            //  攻撃してそうなアニメーション
+        }
+        else if (action[(int)ItemName.Potion])
+        {
+            //  回復してそうなアニメーション
+        }
+
+        if (enemyturn.commandprehubCLONE[GM.TurnCount] != null)
+            enemyturn.commandprehubCLONE[GM.TurnCount].GetComponent<CanvasGroup>().alpha = 0.2f;
+
+        //StartCoroutine(GM.WaitTimer(3.0f, true));
+        GM.nowTURN = TURN.PLAYER_TURN;
+        InAction = false;
     }
 
     public void DamageCalc(string string_attackTYPE, int attackPower)

@@ -21,6 +21,8 @@ public class Player : MonoBehaviour
     [SerializeField] int MagicRES;  //  魔  耐性  
 
     bool[] action = new bool[5];
+
+    bool InAction = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,32 +37,42 @@ public class Player : MonoBehaviour
     {
         action = playerturn.CommandType;
 
-        if(GM.nowTURN == TURN.PLAYER_TURN)
+        if (GM.nowTURN == TURN.PLAYER_TURN && !InAction)
         {
-            playerturn.CommandExecution();
+            InAction = true;
 
-            if (action[(int)ItemName.Sword])
-            {
-                //  攻撃してそうなアニメーション
-            }
-            else if(action[(int)ItemName.Hammer])
-            {
-                //  攻撃してそうなアニメーション
-            }
-            else if (action[(int)ItemName.Magic])
-            {
-                //  攻撃してそうなアニメーション
-            }
-            else if( action[(int)ItemName.Potion] )
-            {
-                //  回復してそうなアニメーション
-            }
-
-            if (playerturn.commandprehubCLONE[GM.TurnCount] != null)
-                playerturn.commandprehubCLONE[GM.TurnCount].GetComponent<CanvasGroup>().alpha = 0.2f;
-
-            StartCoroutine(FindObjectOfType<GameManager>().WaitTimer(2.5f, true));
+            Invoke("Action", 3.0f);
         }
+    }
+
+    void Action()
+    {
+        playerturn.CommandExecution();
+
+        if (action[(int)ItemName.Sword])
+        {
+            //  攻撃してそうなアニメーション
+        }
+        else if (action[(int)ItemName.Hammer])
+        {
+            //  攻撃してそうなアニメーション
+        }
+        else if (action[(int)ItemName.Magic])
+        {
+            //  攻撃してそうなアニメーション
+        }
+        else if (action[(int)ItemName.Potion])
+        {
+            //  回復してそうなアニメーション
+        }
+
+        if (playerturn.commandprehubCLONE[GM.TurnCount] != null)
+            playerturn.commandprehubCLONE[GM.TurnCount].GetComponent<CanvasGroup>().alpha = 0.2f;
+
+        //StartCoroutine(FindObjectOfType<GameManager>().WaitTimer(2.5f, true));
+        GM.nowTURN = TURN.ENEMY_TURN;
+        InAction = false;
+        GM.TurnCount++;
     }
 
     public void DamageCalc(string string_attackTYPE,int attackPower)
