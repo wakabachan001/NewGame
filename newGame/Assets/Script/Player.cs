@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 {
     GameManager GM;
     PlayerTurn playerturn;
+    Animator animator;
 
     //  基礎ステータス
     [SerializeField] int maxHP;
@@ -26,6 +27,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         playerturn = GameObject.Find("PlayerTurn").GetComponent<PlayerTurn>();
 
@@ -45,25 +47,43 @@ public class Player : MonoBehaviour
         }
     }
 
+    void PlayerAnimation(string AnimationName)
+    {
+        if (AnimationName == "attack")
+        {
+            animator.SetTrigger("attack");
+        }
+        else if (AnimationName == "hurt")
+        {
+            animator.SetTrigger("hurt");
+        }
+        else if (AnimationName == "die")
+        {
+            animator.SetTrigger("die");
+        }
+    }
+    
+
+
     void Action()
     {
         playerturn.CommandExecution();
 
         if (action[(int)ItemName.Sword])
         {
-            //  攻撃してそうなアニメーション
+            PlayerAnimation("attack");
         }
         else if (action[(int)ItemName.Hammer])
         {
-            //  攻撃してそうなアニメーション
+            PlayerAnimation("attack");
         }
         else if (action[(int)ItemName.Magic])
         {
-            //  攻撃してそうなアニメーション
+            PlayerAnimation("attack");
         }
         else if (action[(int)ItemName.Potion])
         {
-            //  回復してそうなアニメーション
+            PlayerAnimation("die");
         }
 
         if (playerturn.commandprehubCLONE[GM.TurnCount] != null)

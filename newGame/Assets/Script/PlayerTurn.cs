@@ -51,9 +51,12 @@ public class PlayerTurn : MonoBehaviour
     {
         switch(gamemanager.TurnCount)
         {
-            case 1:
+            case 0:
                 CommandCheck(gamemanager.TurnCount);
                 break; 
+            case 1:
+                CommandCheck(gamemanager.TurnCount);
+                break;
             case 2:
                 CommandCheck(gamemanager.TurnCount);
                 break;
@@ -64,9 +67,6 @@ public class PlayerTurn : MonoBehaviour
                 CommandCheck(gamemanager.TurnCount);
                 break;
             case 5:
-                CommandCheck(gamemanager.TurnCount);
-                break;
-            case 6:
                 CommandCheck(gamemanager.TurnCount);
                 break;
 
@@ -80,19 +80,19 @@ public class PlayerTurn : MonoBehaviour
         for (int i = 0; i < 5; i++)
             CommandType[i] = false;
 
-        if (commandprehubCLONE[commandNUM - 1].name.StartsWith("Sword"))
+        if (commandprehubCLONE[commandNUM].name.StartsWith("Sword"))
         {
             CommandType[(int)ItemName.Sword] = true;
         }                                                 
-       else if (commandprehubCLONE[commandNUM - 1].name.StartsWith("Hammer"))
+       else if (commandprehubCLONE[commandNUM].name.StartsWith("Hammer"))
         {
             CommandType[(int)ItemName.Hammer] = true;
         }                                                  
-       else if (commandprehubCLONE[commandNUM - 1].name.StartsWith("Magic"))
+       else if (commandprehubCLONE[commandNUM].name.StartsWith("Magic"))
         {
             CommandType[(int)ItemName.Magic] = true;
         }                                                  
-       else if (commandprehubCLONE[commandNUM - 1].name.StartsWith("Potion"))
+       else if (commandprehubCLONE[commandNUM].name.StartsWith("Potion"))
         {
             CommandType[(int)ItemName.Potion] = true;
         }
