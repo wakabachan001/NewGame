@@ -58,6 +58,9 @@ public class EnemyTurn : MonoBehaviour
     {
         switch (gamemanager.TurnCount)
         {
+            case 0:
+                CommandCheck(gamemanager.TurnCount);
+                break;
             case 1:
                 CommandCheck(gamemanager.TurnCount);
                 break;
@@ -71,9 +74,6 @@ public class EnemyTurn : MonoBehaviour
                 CommandCheck(gamemanager.TurnCount);
                 break;
             case 5:
-                CommandCheck(gamemanager.TurnCount);
-                break;
-            case 6:
                 CommandCheck(gamemanager.TurnCount);
                 break;
 

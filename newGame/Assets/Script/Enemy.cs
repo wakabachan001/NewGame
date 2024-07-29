@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
 {
     GameManager GM;
     EnemyTurn enemyturn;
+    Player player;
 
     [SerializeField] int maxHP;
     [SerializeField] public int HP;
@@ -26,10 +27,11 @@ public class Enemy : MonoBehaviour
     {
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         enemyturn = GameObject.Find("EnemyTurn").GetComponent<EnemyTurn>();
+        player = GameObject.FindWithTag("Player").GetComponent<Player>();
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (GM.string_nowScene == "BATTLE")
         {
@@ -57,14 +59,20 @@ public class Enemy : MonoBehaviour
         if (action[(int)ItemName.Sword])
         {
             //  攻撃してそうなアニメーション
+            player.DamageCalc("Sword", Strength);
+            player.AttackedByTheEnemy = true;
         }
         else if (action[(int)ItemName.Hammer])
         {
             //  攻撃してそうなアニメーション
+            player.DamageCalc("Hammer", Strength);
+            player.AttackedByTheEnemy = true;
         }
         else if (action[(int)ItemName.Magic])
         {
             //  攻撃してそうなアニメーション
+            player.DamageCalc("Magic", Strength);
+            player.AttackedByTheEnemy = true;
         }
         else if (action[(int)ItemName.Potion])
         {
@@ -92,6 +100,6 @@ public class Enemy : MonoBehaviour
         if (string_attackTYPE == "Magic")
             int_attackTYPE = MagicRES;
 
-        HP = attackPower * (1 - (Defence + int_attackTYPE) / 100);
+        HP -= attackPower * (1 - (Defence + int_attackTYPE) / 100);
     }
 }

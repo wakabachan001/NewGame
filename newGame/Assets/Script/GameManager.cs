@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    Player player;
     public static GameManager Instance { get; private set; }
     public  List<GameObject> CommandList = new List<GameObject>(6);
     public  List<ItemName> playercommand = new List<ItemName>();
     public  List<GameObject> EnemyList = new List<GameObject>(4);
 
     public  int TurnCount = 0;
+    public bool HP0GameOver = false;
+    public bool AllTurnEnd = false;
+    public bool GameClear = false;
 
-    private bool wait = false;
+    bool wait = false;
 
     //public string TURN = "\0";
     public enum GameScene
@@ -60,6 +64,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        
         for (int i = 0; i < CommandList.Count; i++) 
         {
             if (CommandList[i] != null) 
@@ -77,7 +82,6 @@ public class GameManager : MonoBehaviour
                     playercommand[i] = ItemName.Potion;
             }
         }
-
     }
 
     public void SceneChange(GameScene scene)
@@ -136,9 +140,9 @@ public class GameManager : MonoBehaviour
 
     void BattleScene()
     {
-        string_nowScene = "BATTLE";
+        
         Initiate.Fade("Battle", Color.black, 1.5f);
-
+        string_nowScene = "BATTLE";
         Invoke("EnemyInstantiate", 1.0f);
     }
 

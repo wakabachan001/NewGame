@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 using static GameManager;
 
@@ -8,10 +9,11 @@ public class Player : MonoBehaviour
     GameManager GM;
     PlayerTurn playerturn;
     Animator animator;
+    Slider slider;
 
     //  基礎ステータス
     [SerializeField] int maxHP;
-    [SerializeField] int HP;
+    [SerializeField] float HP;
     [SerializeField] int Strength;
     [SerializeField] int Defence;
 
@@ -23,13 +25,16 @@ public class Player : MonoBehaviour
 
     bool[] action = new bool[5];
 
+    bool canprocess = true;
     bool InAction = false;
+    public  bool AttackedByTheEnemy = false;
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         playerturn = GameObject.Find("PlayerTurn").GetComponent<PlayerTurn>();
+        slider = GameObject.Find("PlayerHPBar").GetComponent<Slider>();
 
         HP = maxHP;
     }
@@ -37,6 +42,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        slider.value = HP / maxHP;
+
         action = playerturn.CommandType;
 
         if (GM.nowTURN == TURN.PLAYER_TURN && !InAction)
@@ -45,25 +52,20 @@ public class Player : MonoBehaviour
 
             Invoke("Action", 3.0f);
         }
-    }
 
-    void PlayerAnimation(string AnimationName)
-    {
-        if (AnimationName == "attack")
+        if(AttackedByTheEnemy)
         {
-            animator.SetTrigger("attack");
+            PlayerAnimation("hurt");
+            AttackedByTheEnemy = false;
         }
-        else if (AnimationName == "hurt")
+
+        if ((int)HP < 1 && canprocess)
         {
-            animator.SetTrigger("hurt");
-        }
-        else if (AnimationName == "die")
-        {
-            animator.SetTrigger("die");
+            canprocess = false;
+            PlayerAnimation("die");
+            GM.HP0GameOver = true;
         }
     }
-    
-
 
     void Action()
     {
@@ -95,6 +97,22 @@ public class Player : MonoBehaviour
         GM.TurnCount++;
     }
 
+    void PlayerAnimation(string AnimationName)
+    {
+        if (AnimationName == "attack")
+        {
+            animator.SetTrigger("attack");
+        }
+        else if (AnimationName == "hurt")
+        {
+            animator.SetTrigger("hurt");
+        }
+        else if (AnimationName == "die")
+        {
+            animator.SetTrigger("die");
+        }
+    }
+
     public void DamageCalc(string string_attackTYPE,int attackPower)
     {
         int int_attackTYPE = 0;
@@ -108,6 +126,6 @@ public class Player : MonoBehaviour
         if (string_attackTYPE == "Magic")
             int_attackTYPE = MagicRES;
 
-        HP = attackPower * (1 - (Defence + int_attackTYPE) / 100);
+        HP -= attackPower * (1 - ((float)Defence / 100) + ((float)int_attackTYPE / 100) );
     }
 }

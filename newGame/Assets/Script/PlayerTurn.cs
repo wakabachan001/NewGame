@@ -20,11 +20,15 @@ public class PlayerTurn : MonoBehaviour
 
         for (int i = 0; i < 6; i++) 
         {
-            if (gamemanager.playercommand[i] ==ItemName.Sword)
+            if (gamemanager.playercommand[i] == ItemName.EMPTY)
+            {
+                CLONE_PLAYERCOMMAND(0, i);
+            }
+            else if (gamemanager.playercommand[i] ==ItemName.Sword)
             {
                 CLONE_PLAYERCOMMAND(1, i);
             }
-           else if (gamemanager.playercommand[i] ==  ItemName.Hammer)
+            else if (gamemanager.playercommand[i] ==  ItemName.Hammer)
             {
                 CLONE_PLAYERCOMMAND(2, i);
             }
@@ -36,6 +40,7 @@ public class PlayerTurn : MonoBehaviour
             {
                 CLONE_PLAYERCOMMAND(4, i);
             }
+            
         }
     }
 
