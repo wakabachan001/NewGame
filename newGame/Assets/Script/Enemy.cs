@@ -11,10 +11,13 @@ public class Enemy : MonoBehaviour
     Player player;
     Slider slider;
 
+    public GameObject HealBoxOBJ;
+
     [SerializeField] int maxHP;
     [SerializeField] float HP;
     [SerializeField] int Strength;
     [SerializeField] int Defence;
+    [SerializeField] int HealAmount;
 
     [SerializeField] int SwordRES;
     [SerializeField] int HammerRES;
@@ -67,10 +70,6 @@ public class Enemy : MonoBehaviour
 
     void Action()
     {
-        //  Battleシーンに移動した瞬間に処理が作動しないように遅延をかける
-        //if (GM.TurnCount == 0)
-        //    StartCoroutine(GM.WaitTimer(3.0f, false));
-
         enemyturn.CommandExecution();
 
         if (action[(int)ItemName.Sword])
@@ -93,7 +92,7 @@ public class Enemy : MonoBehaviour
         }
         else if (action[(int)ItemName.Potion])
         {
-            //  回復してそうなアニメーション
+            StartCoroutine(HealBox(HealBoxOBJ));
         }
 
         if (enemyturn.commandprehubCLONE[GM.TurnCount] != null)
@@ -118,5 +117,19 @@ public class Enemy : MonoBehaviour
             int_attackTYPE = MagicRES;
 
         HP -= attackPower * (1 - ((float)Defence / 100) + ((float)int_attackTYPE / 100));
+    }
+
+    IEnumerator HealBox(GameObject a)
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            a.SetActive(true);
+            yield return new WaitForSeconds(0.1f);
+
+            a.SetActive(false);
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        HP += (float)maxHP * ((float)HealAmount / 100);
     }
 }

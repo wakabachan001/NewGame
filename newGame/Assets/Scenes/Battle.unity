@@ -1541,15 +1541,32 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7359157793940712506, guid: ebea5f8b8163f9a4ab9d9a1b45444e28, type: 3}
-      propertyPath: Strength
-      value: 50
+    - target: {fileID: 6128767943852470054, guid: ebea5f8b8163f9a4ab9d9a1b45444e28, type: 3}
+      propertyPath: m_Name
+      value: healBOX
       objectReference: {fileID: 0}
+    - target: {fileID: 6128767943852470054, guid: ebea5f8b8163f9a4ab9d9a1b45444e28, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7359157793940712506, guid: ebea5f8b8163f9a4ab9d9a1b45444e28, type: 3}
+      propertyPath: HealAmount
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7359157793940712506, guid: ebea5f8b8163f9a4ab9d9a1b45444e28, type: 3}
+      propertyPath: HealBoxOBJ
+      value: 
+      objectReference: {fileID: 861025513}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebea5f8b8163f9a4ab9d9a1b45444e28, type: 3}
+--- !u!1 &861025513 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6128767943852470054, guid: ebea5f8b8163f9a4ab9d9a1b45444e28, type: 3}
+  m_PrefabInstance: {fileID: 861025512}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &919528667
 GameObject:
   m_ObjectHideFlags: 0

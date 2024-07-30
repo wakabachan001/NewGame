@@ -12,11 +12,14 @@ public class Player : MonoBehaviour
     Slider slider;
     Enemy enemy;
 
+    public GameObject HealBoxOBJ;
+
     //  基礎ステータス
     [SerializeField] int maxHP;
     [SerializeField] float HP;
     [SerializeField] int Strength;
     [SerializeField] int Defence;
+    [SerializeField] int HealAmount;
 
     //  攻撃種別　耐性
     //  RES = resistance( 耐性 )
@@ -36,6 +39,7 @@ public class Player : MonoBehaviour
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         playerturn = GameObject.Find("PlayerTurn").GetComponent<PlayerTurn>();
         slider = GameObject.Find("PlayerHPBar").GetComponent<Slider>();
+        //spriteRenderer = HealBoxOBJ.GetComponent<SpriteRenderer>();
 
         HP = maxHP;
     }
@@ -92,7 +96,7 @@ public class Player : MonoBehaviour
         }
         else if (action[(int)ItemName.Potion])
         {
-            PlayerAnimation("die");
+            PlayerAnimation("heal");
         }
 
         if (playerturn.commandprehubCLONE[GM.TurnCount] != null)
@@ -114,6 +118,10 @@ public class Player : MonoBehaviour
         {
             animator.SetTrigger("hurt");
         }
+        else if(AnimationName == "heal")
+        {
+            StartCoroutine(HealBox(HealBoxOBJ));
+        }
         else if (AnimationName == "die")
         {
             animator.SetTrigger("die");
@@ -134,5 +142,19 @@ public class Player : MonoBehaviour
             int_attackTYPE = MagicRES;
 
         HP -= attackPower * (1 - ((float)Defence / 100) + ((float)int_attackTYPE / 100) );
+    }
+
+    IEnumerator HealBox(GameObject a)
+    {
+        for (int i = 0; i < 4; i++) 
+        {
+            a.SetActive(true);
+            yield return new WaitForSeconds(0.1f);
+
+            a.SetActive(false);
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        HP += (float)maxHP * ((float)HealAmount / 100);
     }
 }
