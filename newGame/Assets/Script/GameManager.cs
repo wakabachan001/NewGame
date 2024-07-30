@@ -140,7 +140,6 @@ public class GameManager : MonoBehaviour
 
     void BattleScene()
     {
-        
         Initiate.Fade("Battle", Color.black, 1.5f);
         string_nowScene = "BATTLE";
         Invoke("EnemyInstantiate", 1.0f);
@@ -171,27 +170,5 @@ public class GameManager : MonoBehaviour
         Transform EnemyParentTransform = GameOBJ_EnemyParent.GetComponent<Transform>();
 
         Script_EnemyParent.EnemyArray[StageSelect.int_StageNumber].SetActive(true);
-
-        //GameObject EnemyObject;
-        //EnemyObject = Instantiate(EnemyList[StageSelect.int_StageNumber], EnemyParentTransform);
-        //EnemyObject.transform.localScale *= 0.7f;
-
-    }
-
-    public IEnumerator WaitTimer(float time, bool TurnChange)
-    {
-        wait = true;
-
-        yield return new WaitForSecondsRealtime(time);
-
-        wait = false;
-
-        if (TurnChange)
-        {
-            if (nowTURN == TURN.PLAYER_TURN)
-                nowTURN = TURN.ENEMY_TURN;
-            else if (nowTURN == TURN.ENEMY_TURN)
-                nowTURN = TURN.PLAYER_TURN;
-        }
     }
 }

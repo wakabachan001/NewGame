@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     PlayerTurn playerturn;
     Animator animator;
     Slider slider;
+    Enemy enemy;
 
     //  基礎ステータス
     [SerializeField] int maxHP;
@@ -48,6 +49,8 @@ public class Player : MonoBehaviour
 
         if (GM.nowTURN == TURN.PLAYER_TURN && !InAction)
         {
+            if (enemy == null) 
+                enemy = GameObject.FindWithTag("Enemy").GetComponent<Enemy>();
             InAction = true;
 
             Invoke("Action", 3.0f);
@@ -63,7 +66,8 @@ public class Player : MonoBehaviour
         {
             canprocess = false;
             PlayerAnimation("die");
-            GM.HP0GameOver = true;
+
+            GM.SceneChange(GameScene.GAMEOVER1);
         }
     }
 
@@ -74,14 +78,17 @@ public class Player : MonoBehaviour
         if (action[(int)ItemName.Sword])
         {
             PlayerAnimation("attack");
+            enemy.DamageCalc("Sword", Strength);
         }
         else if (action[(int)ItemName.Hammer])
         {
             PlayerAnimation("attack");
+            enemy.DamageCalc("Hammer", Strength);
         }
         else if (action[(int)ItemName.Magic])
         {
             PlayerAnimation("attack");
+            enemy.DamageCalc("Magic", Strength);
         }
         else if (action[(int)ItemName.Potion])
         {

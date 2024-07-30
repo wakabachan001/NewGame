@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using static GameManager;
 
 public class Enemy : MonoBehaviour
@@ -8,9 +9,10 @@ public class Enemy : MonoBehaviour
     GameManager GM;
     EnemyTurn enemyturn;
     Player player;
+    Slider slider;
 
     [SerializeField] int maxHP;
-    [SerializeField] public int HP;
+    [SerializeField] float HP;
     [SerializeField] int Strength;
     [SerializeField] int Defence;
 
@@ -20,14 +22,22 @@ public class Enemy : MonoBehaviour
 
     bool[] action = new bool[5];
 
+    bool canprocess = true;
     bool InAction = false;
     public List<ItemName> enemycommand = new List<ItemName>();
+    public bool AttackedByThePlayer = false;
     // Start is called before the first frame update
     void Start()
     {
         GM = GameObject.Find("GameManager").GetComponent<GameManager>();
         enemyturn = GameObject.Find("EnemyTurn").GetComponent<EnemyTurn>();
-        player = GameObject.FindWithTag("Player").GetComponent<Player>();
+
+        if(GM.string_nowScene == "BATTLE"){
+            player = GameObject.FindWithTag("Player").GetComponent<Player>();
+            slider = GameObject.Find("EnemyHPBar").GetComponent<Slider>();
+        }
+
+        HP = maxHP;
     }
 
     // Update is called once per frame
@@ -35,6 +45,7 @@ public class Enemy : MonoBehaviour
     {
         if (GM.string_nowScene == "BATTLE")
         {
+            slider.value = HP / maxHP;
             action = enemyturn.CommandType;
 
             if (GM.nowTURN == TURN.ENEMY_TURN && !InAction)
@@ -46,6 +57,12 @@ public class Enemy : MonoBehaviour
         }
         else
             enabled = false;
+
+        if ((int)HP < 1 && canprocess)
+        {
+            canprocess = false;
+            GM.SceneChange(GameScene.GAMECLEAR);
+        }
     }
 
     void Action()
@@ -100,6 +117,6 @@ public class Enemy : MonoBehaviour
         if (string_attackTYPE == "Magic")
             int_attackTYPE = MagicRES;
 
-        HP -= attackPower * (1 - (Defence + int_attackTYPE) / 100);
+        HP -= attackPower * (1 - ((float)Defence / 100) + ((float)int_attackTYPE / 100));
     }
 }
