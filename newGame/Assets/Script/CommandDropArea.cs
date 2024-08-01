@@ -23,7 +23,7 @@ public class CommandDropArea : MonoBehaviour, IDropHandler
         if (SelectedCommand != null) 
         { 
             Destroy(SelectedCommand);
-            gameManager.CommandList.Remove(SelectedCommand);
+            //gameManager.CommandList.Remove(SelectedCommand);
 
         }
 

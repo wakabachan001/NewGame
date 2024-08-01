@@ -17,7 +17,8 @@ public class Player : MonoBehaviour
     //  基礎ステータス
     [SerializeField] int maxHP;
     [SerializeField] float HP;
-    [SerializeField] int Strength;
+    [SerializeField] float Strength;
+    [SerializeField] float Strength_Buff_Value;
     [SerializeField] int Defence;
     [SerializeField] int HealAmount;
 
@@ -29,6 +30,8 @@ public class Player : MonoBehaviour
 
     bool[] action = new bool[5];
 
+    bool Strength_Buff = false;
+    bool Hammer_Stun = false;
     bool canprocess = true;
     bool InAction = false;
     public  bool AttackedByTheEnemy = false;
@@ -57,7 +60,7 @@ public class Player : MonoBehaviour
                 enemy = GameObject.FindWithTag("Enemy").GetComponent<Enemy>();
             InAction = true;
 
-            Invoke("Action", 3.0f);
+            Invoke("Action", 1.0f);
         }
 
         if(AttackedByTheEnemy)
@@ -82,17 +85,33 @@ public class Player : MonoBehaviour
         if (action[(int)ItemName.Sword])
         {
             PlayerAnimation("attack");
-            enemy.DamageCalc("Sword", Strength);
+            CheckStrengthBuff("Sword");
+            //if (Strength_Buff){
+            //    enemy.DamageCalc("Sword", Strength + (Strength * (Strength_Buff_Value / 100)));
+            //}
+            //else
+            //    enemy.DamageCalc("Sword", Strength);
         }
         else if (action[(int)ItemName.Hammer])
         {
             PlayerAnimation("attack");
-            enemy.DamageCalc("Hammer", Strength);
+            CheckStrengthBuff("Hammer");
+            //if (Strength_Buff) { 
+            //    enemy.DamageCalc("Hammer", Strength * 0.4f + (Strength * (Strength_Buff_Value / 100)));
+            //}
+            //else
+            //    enemy.DamageCalc("Hammer", Strength * 0.4f);
         }
         else if (action[(int)ItemName.Magic])
         {
             PlayerAnimation("attack");
-            enemy.DamageCalc("Magic", Strength);
+            CheckStrengthBuff("Magic");
+            //if (Strength_Buff){
+            //    enemy.DamageCalc("Magic", Strength * 0.4f);
+            //}
+            //else
+                
+            Strength_Buff = true;
         }
         else if (action[(int)ItemName.Potion])
         {
@@ -128,9 +147,31 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void DamageCalc(string string_attackTYPE,int attackPower)
+    void CheckStrengthBuff(string AttackType)
     {
-        int int_attackTYPE = 0;
+        if(Strength_Buff)
+        {
+            if(AttackType=="Sword")
+                enemy.DamageCalc(AttackType, Strength + (Strength * (Strength_Buff_Value / 100)));
+            else
+                enemy.DamageCalc(AttackType, Strength * 0.4f + (Strength * (Strength_Buff_Value / 100)));
+
+            Strength_Buff = false;
+        }
+        else
+        {
+            if (AttackType == "Sword")
+                enemy.DamageCalc(AttackType, Strength);
+            else
+                enemy.DamageCalc("Magic", Strength * 0.4f);
+        }
+    }
+    public void DamageCalc(string string_attackTYPE,float attackPower)
+    {
+        float int_attackTYPE = 0;
+        float RES_Value = 0.0f;
+        float DEF_Value = 0.0f;
+        float ATK_Value = 0;
 
         if (string_attackTYPE == "Sword")
             int_attackTYPE = SwordRES;
@@ -141,7 +182,11 @@ public class Player : MonoBehaviour
         if (string_attackTYPE == "Magic")
             int_attackTYPE = MagicRES;
 
-        HP -= attackPower * (1 - ((float)Defence / 100) + ((float)int_attackTYPE / 100) );
+        RES_Value = 1 - ((float)int_attackTYPE / 100);
+        DEF_Value = 1 - ((float)Defence / 100);
+        ATK_Value = attackPower * RES_Value * DEF_Value;
+
+        HP -= (int)ATK_Value;
     }
 
     IEnumerator HealBox(GameObject a)

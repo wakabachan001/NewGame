@@ -55,7 +55,7 @@ public class Enemy : MonoBehaviour
             {
                 InAction = true;
 
-                Invoke("Action", 3.0f);
+                Invoke("Action", 1.0f);
             }
         }
         else
@@ -103,9 +103,12 @@ public class Enemy : MonoBehaviour
         InAction = false;
     }
 
-    public void DamageCalc(string string_attackTYPE, int attackPower)
+    public void DamageCalc(string string_attackTYPE, float attackPower)
     {
-        int int_attackTYPE = 0;
+        float int_attackTYPE = 0;
+        float RES_Value = 0.0f;
+        float DEF_Value = 0.0f;
+        float ATK_Value = 0;
 
         if (string_attackTYPE == "Sword")
             int_attackTYPE = SwordRES;
@@ -116,7 +119,11 @@ public class Enemy : MonoBehaviour
         if (string_attackTYPE == "Magic")
             int_attackTYPE = MagicRES;
 
-        HP -= attackPower * (1 - ((float)Defence / 100) + ((float)int_attackTYPE / 100));
+        RES_Value = 1 - ((float)int_attackTYPE / 100);
+        DEF_Value = 1 - ((float)Defence / 100);
+        ATK_Value = attackPower * RES_Value * DEF_Value;
+
+        HP -= (int)ATK_Value;
     }
 
     IEnumerator HealBox(GameObject a)
