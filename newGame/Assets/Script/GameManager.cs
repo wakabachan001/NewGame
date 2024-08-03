@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public  List<GameObject> EnemyList = new List<GameObject>(4);
 
     public  int TurnCount = 0;
+    public float turnSpeed = 0.1f;
+    public float turnSpeedMultiplier = 1.0f;
     public bool HP0GameOver = false;
     public bool AllTurnEnd = false;
     public bool GameClear = false;

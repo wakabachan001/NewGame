@@ -44,7 +44,7 @@ public class Enemy : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if (GM.string_nowScene == "BATTLE")
         {
@@ -55,7 +55,7 @@ public class Enemy : MonoBehaviour
             {
                 InAction = true;
 
-                Invoke("Action", 1.0f);
+                Invoke("Action", GM.turnSpeed / GM.turnSpeedMultiplier);
             }
         }
         else
@@ -76,19 +76,22 @@ public class Enemy : MonoBehaviour
         {
             //  攻撃してそうなアニメーション
             player.DamageCalc("Sword", Strength);
-            player.AttackedByTheEnemy = true;
+            player.hasTakenDamage = true;
         }
         else if (action[(int)ItemName.Hammer])
         {
             //  攻撃してそうなアニメーション
             player.DamageCalc("Hammer", Strength);
-            player.AttackedByTheEnemy = true;
+            player.hasTakenDamage = true;
+
+            if (player.isHammer_StunImmune == false) 
+                player.Hammer_Stun = true;
         }
         else if (action[(int)ItemName.Magic])
         {
             //  攻撃してそうなアニメーション
             player.DamageCalc("Magic", Strength);
-            player.AttackedByTheEnemy = true;
+            player.hasTakenDamage = true;
         }
         else if (action[(int)ItemName.Potion])
         {
@@ -98,7 +101,6 @@ public class Enemy : MonoBehaviour
         if (enemyturn.commandprehubCLONE[GM.TurnCount] != null)
             enemyturn.commandprehubCLONE[GM.TurnCount].GetComponent<CanvasGroup>().alpha = 0.2f;
 
-        //StartCoroutine(GM.WaitTimer(3.0f, true));
         GM.nowTURN = TURN.PLAYER_TURN;
         InAction = false;
     }

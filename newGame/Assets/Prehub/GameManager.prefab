@@ -57,5 +57,12 @@ MonoBehaviour:
   - {fileID: 3251214440278622263, guid: a1bf94042c3645b49945f59a2745e38b, type: 3}
   - {fileID: 7052557827498241720, guid: 895091bd6da521745a430638e9b7c58e, type: 3}
   - {fileID: 2048795692867387678, guid: 4a678e7f6e295cb49a1b720ecfa16313, type: 3}
-  TurnCount: 1
+  TurnCount: 0
+  turnSpeed: 1
+  turnSpeedMultiplier: 1
+  HP0GameOver: 0
+  AllTurnEnd: 0
+  GameClear: 0
+  nowScene: 1
+  string_nowScene: 
   nowTURN: 1
