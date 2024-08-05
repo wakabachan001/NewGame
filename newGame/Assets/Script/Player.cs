@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
     [SerializeField] int SwordRES;  //  剣の耐性
     [SerializeField] int HammerRES; //  槌の耐性
     [SerializeField] int MagicRES;  //  魔の耐性
+    public float EffectRES;
 
     bool[] action = new bool[5];
 
@@ -101,16 +102,22 @@ public class Player : MonoBehaviour
             {
                 PlayerAnimation("attack");
                 CheckStrengthBuff("Sword");
+                enemy.hasTakenDamage = true;
             }
             else if (action[(int)ItemName.Hammer])
             {
                 PlayerAnimation("attack");
                 CheckStrengthBuff("Hammer");
+                enemy.hasTakenDamage = true;
+
+                if (enemy.isHammer_StunImmune == false)
+                    enemy.Hammer_Stun = (Random.value > (1 - enemy.EffectRES / 100)); //  ( 値 * 100 )% の確率でtrueを返す
             }
             else if (action[(int)ItemName.Magic])
             {
                 PlayerAnimation("attack");
                 CheckStrengthBuff("Magic");
+                enemy.hasTakenDamage = true;
 
                 Strength_Buff = true;
             }
@@ -174,23 +181,24 @@ public class Player : MonoBehaviour
                 enemy.DamageCalc(AttackType, Strength * StrengthReduction / 100);
         }
     }
+
     public void DamageCalc(string string_attackTYPE,float attackPower)
     {
-        float int_attackTYPE = 0;   //  攻撃種類によって値（耐性値）を変更させる用
+        float float_attackTYPE = 0.0f;   //  攻撃種類によって値（耐性値）を変更させる用
         float RES_Value = 0.0f;     //  最終耐性値
         float DEF_Value = 0.0f;     //  最終防御力
         float ATK_Value = 0;        //  最終攻撃値
 
         if (string_attackTYPE == "Sword")
-            int_attackTYPE = SwordRES;
+            float_attackTYPE = SwordRES;
 
         if (string_attackTYPE == "Hammer")
-            int_attackTYPE = HammerRES;
+            float_attackTYPE = HammerRES;
 
         if (string_attackTYPE == "Magic")
-            int_attackTYPE = MagicRES;
+            float_attackTYPE = MagicRES;
 
-        RES_Value = 1 - ((float)int_attackTYPE / 100);
+        RES_Value = 1 - ((float)float_attackTYPE / 100);
         DEF_Value = 1 - ((float)Defense / 100);
         ATK_Value = attackPower * RES_Value * DEF_Value;
 

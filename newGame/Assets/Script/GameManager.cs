@@ -84,6 +84,11 @@ public class GameManager : MonoBehaviour
                     playercommand[i] = ItemName.Potion;
             }
         }
+
+        if (TurnCount == 6)
+        {
+            SceneChange(GameScene.GAMEOVER2);
+        }
     }
 
     public void SceneChange(GameScene scene)
