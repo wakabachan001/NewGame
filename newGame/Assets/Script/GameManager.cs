@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour
 
         if (TurnCount == 6)
         {
-            SceneChange(GameScene.GAMEOVER2);
+           SceneChange(GameScene.GAMEOVER2);
         }
     }
 

@@ -25,7 +25,7 @@ public class EnemyTurn : MonoBehaviour
     {
         enemy = GameObject.FindWithTag("Enemy").GetComponent<Enemy>();
 
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < enemy.enemycommand.Count; i++)
         {
             if (enemy.enemycommand[i] == ItemName.Sword)
             {

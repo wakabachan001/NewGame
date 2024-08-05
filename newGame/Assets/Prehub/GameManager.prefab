@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5130146681298165262}
   - component: {fileID: 6264778661997466405}
+  - component: {fileID: -6577226646300848534}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -66,3 +67,15 @@ MonoBehaviour:
   nowScene: 1
   string_nowScene: 
   nowTURN: 1
+--- !u!114 &-6577226646300848534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4426932728054481368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 129f6a517b0a3bb46ab4ed4205837c77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -54,6 +54,9 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (currentHP > maxHP)
+            currentHP = maxHP;
+
         if (GM.string_nowScene == "BATTLE")
         {
             slider.value = currentHP / maxHP;

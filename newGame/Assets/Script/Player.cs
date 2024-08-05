@@ -54,6 +54,9 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (currentHP > maxHP)
+            currentHP = maxHP;
+
         slider.value = currentHP / maxHP;
 
         action = playerturn.CommandType;
