@@ -138,7 +138,7 @@ public class Player : MonoBehaviour
 
         GM.nowTURN = TURN.ENEMY_TURN;
         InAction = false;
-        GM.TurnCount++; //  プレイやーは後攻なので、プレイヤーのターンが終了したときに次のターンに進行する
+        Invoke("TurnCounter", 0.5f);
     }
 
     void PlayerAnimation(string AnimationName)
@@ -163,6 +163,11 @@ public class Player : MonoBehaviour
         {
             animator.SetTrigger("die");
         }
+    }
+
+    void TurnCounter()
+    {
+        GM.TurnCount++; //  プレイやーは後攻なので、プレイヤーのターンが終了したときに次のターンに進行する
     }
 
     void CheckStrengthBuff(string AttackType)   //  攻撃力バフを受けているか調べて、ダメージ計算をする関数

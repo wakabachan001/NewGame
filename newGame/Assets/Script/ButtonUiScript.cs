@@ -29,6 +29,12 @@ public class ButtonUiScript : MonoBehaviour
     }
     public void endGame()
     {
-        
+        // エディタ内での動作
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        // ビルドされたアプリケーションでの動作
+        Application.Quit();
+#endif
     }
 }

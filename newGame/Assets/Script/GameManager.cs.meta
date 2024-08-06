@@ -3,7 +3,14 @@ guid: d5d9dbac7c1f56d418a23930c0cda294
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - m_Title: {instanceID: 0}
+  - m_StageSelect: {instanceID: 0}
+  - m_CommandSelect: {instanceID: 0}
+  - m_Battle: {instanceID: 0}
+  - m_GameOver1: {instanceID: 0}
+  - m_GameOver2: {instanceID: 0}
+  - m_GameClear: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

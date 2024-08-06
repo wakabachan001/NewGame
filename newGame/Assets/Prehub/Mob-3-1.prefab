@@ -1,5 +1,89 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2838388673278541809
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9053666004500700467}
+  - component: {fileID: 8776317467390180099}
+  m_Layer: 0
+  m_Name: StunImmuneBOX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &9053666004500700467
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2838388673278541809}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.36, y: -0.4099, z: -98.54639}
+  m_LocalScale: {x: 2.76588, y: 2.8821735, z: 0.67541}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 3251214440278622260}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &8776317467390180099
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2838388673278541809}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 20
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Color: {r: 1, g: 1, b: 0, a: 0.3254902}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &3251214439203088544
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,6 +620,7 @@ Transform:
   m_Children:
   - {fileID: 3251214440392445833}
   - {fileID: 8365642994023249704}
+  - {fileID: 9053666004500700467}
   - {fileID: 2560901047463761375}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -552,16 +637,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HealBoxOBJ: {fileID: 6348978286153604063}
-  maxHP: 0
-  HP: 0
-  Strength: 0
-  Defence: 0
-  HealAmount: 0
-  SwordRES: 0
+  StunImmuneBOX: {fileID: 2838388673278541809}
+  maxHP: 175
+  currentHP: 0
+  Strength: 38
+  Strength_Buff_Value: 25
+  StrengthReduction: 40
+  Defence: 10
+  HealAmount: 28
+  SwordRES: -10
   HammerRES: 0
-  MagicRES: 0
-  enemycommand: 
-  AttackedByThePlayer: 0
+  MagicRES: 25
+  EffectRES: 50
+  Hammer_Stun: 0
+  isHammer_StunImmune: 0
+  hasTakenDamage: 0
+  enemycommand: 010000000400000003000000020000000400000001000000
 --- !u!1 &3251214440392445832
 GameObject:
   m_ObjectHideFlags: 0

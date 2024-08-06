@@ -2,8 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public struct Audio
+{
+    public float AudioVolume;
+    public bool AudioLoop;
+}
+
 public class GameManager : MonoBehaviour
 {
+    AudioSource m_AudioSource;
+
+    public AudioClip m_Title;
+    public AudioClip m_StageSelect;
+    public AudioClip m_CommandSelect;
+    public AudioClip m_Battle;
+    public AudioClip m_GameOver1;
+    public AudioClip m_GameOver2;
+    public AudioClip m_GameClear;
+
     Player player;
     public static GameManager Instance { get; private set; }
     public  List<GameObject> CommandList = new List<GameObject>(6);
@@ -61,12 +77,26 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
 
+    private void Start()
+    {
+        m_AudioSource = GetComponent<AudioSource>();
+        m_AudioSource.PlayOneShot(m_Title, 0.5f);
     }
 
     private void Update()
     {
-        
+        if (string_nowScene == "STAGESELECT")
+        {
+            TurnCount = 0;
+
+            for (int i = 0; i < playercommand.Count; i++)
+                playercommand[i] = ItemName.EMPTY;
+        }
+
+        Invoke("a", 5f);
+
         for (int i = 0; i < CommandList.Count; i++) 
         {
             if (CommandList[i] != null) 
@@ -83,11 +113,6 @@ public class GameManager : MonoBehaviour
                else if (CommandList[i].name.StartsWith("Potion"))
                     playercommand[i] = ItemName.Potion;
             }
-        }
-
-        if (TurnCount == 6)
-        {
-           SceneChange(GameScene.GAMEOVER2);
         }
     }
 
@@ -125,16 +150,29 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void a()
+    {
+        if (TurnCount == 6)
+        {
+            TurnCount++;
+            SceneChange(GameScene.GAMEOVER2);
+        }
+    }
+
     void TitleScene()
     {
         string_nowScene = "TITLE";
         Initiate.Fade("Title", Color.black, 1.5f);
+
+        AudioPlayer(m_Title, true, 0.5f, 1.0f);
     }
 
     void StageSelectScene()
     {
         string_nowScene = "STAGESELECT";
         Initiate.Fade("StageSelect", Color.black, 1.5f);
+
+        AudioPlayer(m_StageSelect, true, 0.5f, 1.0f);
     }
 
     void CommandSelectScene()
@@ -143,6 +181,8 @@ public class GameManager : MonoBehaviour
         Initiate.Fade("CommandSelect", Color.black, 1.5f);
 
         Invoke("EnemyInstantiate", 1.0f);
+
+        AudioPlayer(m_CommandSelect, true, 0.5f, 1.0f);
     }
 
     void BattleScene()
@@ -150,24 +190,32 @@ public class GameManager : MonoBehaviour
         Initiate.Fade("Battle", Color.black, 1.5f);
         string_nowScene = "BATTLE";
         Invoke("EnemyInstantiate", 1.0f);
+
+        AudioPlayer(m_Battle, true, 0.5f, 1.0f);
     }
 
     void GameClearScene()
     {
         string_nowScene = "GAMECLEAR";
         Initiate.Fade("GameClear", Color.black, 1.5f);
+
+        AudioPlayer(m_GameClear, true, 0.5f, 1.0f);
     }
 
     void GameOver1Scene()
     {
         string_nowScene = "GAMEOVER1";
         Initiate.Fade("GameOver1", Color.black, 1.5f);
+
+        AudioPlayer(m_GameOver1, true, 0.5f, 1.0f);
     }
 
     void GameOver2Scene()
     {
         string_nowScene = "GAMEOVER2";
         Initiate.Fade("GameOver2", Color.black, 1.5f);
+
+        AudioPlayer(m_GameOver2, true, 0.5f, 1.0f);
     }
 
     void EnemyInstantiate()
@@ -177,5 +225,13 @@ public class GameManager : MonoBehaviour
         Transform EnemyParentTransform = GameOBJ_EnemyParent.GetComponent<Transform>();
 
         Script_EnemyParent.EnemyArray[StageSelect.int_StageNumber].SetActive(true);
+    }
+
+    void AudioPlayer(AudioClip clip,bool loop,float volume,float delayTime)
+    {
+        m_AudioSource.clip = clip;
+        m_AudioSource.loop = loop;
+        m_AudioSource.volume = volume;
+        m_AudioSource.PlayDelayed(delayTime);
     }
 }

@@ -56,15 +56,15 @@ MonoBehaviour:
   Strength_Buff_Value: 20
   StrengthReduction: 40
   Defence: 10
-  HealAmount: 20
+  HealAmount: 15
   SwordRES: 0
   HammerRES: 0
   MagicRES: 0
-  EffectRES: 40
+  EffectRES: 50
   Hammer_Stun: 0
   isHammer_StunImmune: 0
   hasTakenDamage: 0
-  enemycommand: 020000000200000002000000020000000200000002000000
+  enemycommand: 010000000100000004000000040000000300000001000000
 --- !u!1 &2863947381746065299
 GameObject:
   m_ObjectHideFlags: 0

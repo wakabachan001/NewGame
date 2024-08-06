@@ -71,12 +71,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HealBoxOBJ: {fileID: 6128767943852470054}
   StunImmuneBOX: {fileID: 7550336535512663633}
-  maxHP: 100
+  maxHP: 150
   currentHP: 0
   Strength: 50
   Strength_Buff_Value: 20
   StrengthReduction: 40
-  Defense: 0
+  Defense: 10
   HealAmount: 20
   SwordRES: 10
   HammerRES: 10
